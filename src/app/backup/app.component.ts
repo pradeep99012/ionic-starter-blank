@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
-
 export class AppComponent {
   selectedDate: string;
   today: string;
@@ -52,4 +52,4 @@ export class AppComponent {
     oneYearAgoObj.setFullYear(oneYearAgoObj.getFullYear() - 1);
     this.oneYearAgo = oneYearAgoObj.toISOString().slice(0, 10);
   }
-}
+}    

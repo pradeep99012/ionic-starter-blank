@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <h1 style="font-weight: 600">Sample App with ion-
+      datetime component.</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onSubmit()" #dateForm="ngForm" >
+    <ion-label>Select a date from future</ion-label>
+    <ion-input type="text" placeholder="Select Date" id="open-modal" [(ngModel)]="selectedDate" [ngModelOptions]="{standalone: true}"></ion-input>
+      <ion-modal class="datetime-modal" trigger="open-modal">
+      <ng-template>
+        <ion-content>
+          <ion-datetime size="cover" (ngModel)="occasionDate" (ionChange)="setDate(datetimeId.value)" [min]="minTime" [max]="maxTime"
+            #datetimeId show-default-buttons="true" >
+          </ion-datetime>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+    <ion-button type="submit">Submit</ion-button>
+  </form>
+
+  <ion-list *ngIf="showOutput">
+    <ion-item>
+      <ion-label class="label">Today</ion-label>
+      <ion-label class="value">{{ today }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label">Yesterday</ion-label>
+      <ion-label class="value">{{ yesterday }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label">10 days past selected date</ion-label>
+      <ion-label class="value">{{ tenDaysAgo }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label">1 year past selected date</ion-label>
+      <ion-label class="value">{{ oneYearAgo }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
